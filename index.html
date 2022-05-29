@@ -3,24 +3,34 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>AR in Web</title>
-</head>
-
-<body style="margin: 0px; overflow: hidden;">
+	<script src="src/index.js"></script>
+	<link rel="stylesheet" href="src/styles.css">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+	<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 	<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-	<a-scene embedded arjs>
-		<a-marker preset="hiro">
-			<a-entity position="0 0 0" scale="0.15 0.15 0.15" gltf-model="obj/scene.gltf"
-				animation-mixer="clip: *; loop:repeat" isPlaying=true>
-				<!-- <a-animation attribute='rotation' dur='3000' to='360 0 0' repeat='indefinite' easing='linear'> -->
-				<!-- </a-animation> -->
-			</a-entity>
-		</a-marker>
-		<a-entity camera></a-entity>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+
+	<section>
+		<label for="potencial">Proposal Type *</label>
+		<select name="potencial" id="potencial" class="custom-select sources" placeholder="Project hiring">
+			<option value="DH" selected>Project hiring</option>
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+			<option value="D">D</option>
+		</select>
+	</section>
+	<a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+		<a-entity position="0 1 1" scale="0.2 0.2 0.2" gltf-model="robot_playground/scene.gltf"
+			animation-mixer="clip: *; loop:repeat" isPlaying=true></a-entity>
+		<a-camera gps-camera rotation-reader> </a-camera>
 	</a-scene>
 </body>
 
