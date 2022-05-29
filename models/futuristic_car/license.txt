@@ -1,0 +1,11 @@
+Model Information:
+* title:	Futuristic Car for 3D-Printing
+* source:	https://sketchfab.com/3d-models/futuristic-car-for-3d-printing-f8ebc16dd3814d6abe7866645fef7378
+* author:	3DHaupt (https://sketchfab.com/dennish2010)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Futuristic Car for 3D-Printing" (https://sketchfab.com/3d-models/futuristic-car-for-3d-printing-f8ebc16dd3814d6abe7866645fef7378) by 3DHaupt (https://sketchfab.com/dennish2010) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
