@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>AR in Web</title>
 </head>
-<body>
+
+<body style="margin: 0px; overflow: hidden;">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 	<a-scene embedded arjs>
 		<a-marker preset="hiro">
-			<a-entity
-				position="0 2 0.25"
-				scale="0.2 0.2 0.2"
-				gltf-model="obj/scene.gltf"
-				animation-mixer="clip: *; loop:repeat"
-				isPlaying = true
-			></a-entity>
+			<a-entity position="0 0 0" scale="0.15 0.15 0.15" gltf-model="obj/scene.gltf"
+				animation-mixer="clip: *; loop:repeat" isPlaying=true>
+				<!-- <a-animation attribute='rotation' dur='3000' to='360 0 0' repeat='indefinite' easing='linear'> -->
+				<!-- </a-animation> -->
+			</a-entity>
 		</a-marker>
 		<a-entity camera></a-entity>
 	</a-scene>
 </body>
+
 </html>
