@@ -6,31 +6,84 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>AR in Web</title>
-	<script src="src/index.js"></script>
-	<link rel="stylesheet" href="src/styles.css">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 	<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+	<script src="src/index.js"></script>
+	<link rel="stylesheet" href="src/styles.css">
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
+	<div class="form_toggle">
+		<div class="form_toggle-item item-1" onclick="show_select_location_models();">
+			<input id="fid-1" type="radio" name="radio" value="Location" checked>
+			<label for="fid-1">Location models</label>
+		</div>
+		<div class="form_toggle-item item-2" onclick="show_marker_models();">
+			<input id="fid-2" type="radio" name="radio" value="Markers">
+			<label for="fid-2">Markers models</label>
+		</div>
+	</div>
 
-	<section>
-		<label for="potencial">Proposal Type *</label>
-		<select name="potencial" id="potencial" class="custom-select sources" placeholder="Project hiring">
-			<option value="DH" selected>Project hiring</option>
-			<option value="A">A</option>
-			<option value="B">B</option>
-			<option value="C">C</option>
-			<option value="D">D</option>
-		</select>
-	</section>
+	<details id="select_location_models" class="custom-select">
+		<summary class="radios">
+			<input type="radio" name="item" id="item_robot" title="Robot" onclick="pick_robot_model()" checked>
+			<input type="radio" name="item" id="item_dragon" title="Dragon" onclick="pick_dragon_model()">
+			<input type="radio" name="item" id="item_building" title="Building" onclick="pick_building_model()">
+			<input type="radio" name="item" id="item_car" title="Car" onclick="pick_car_model()">
+		</summary>
+		<ul class="list">
+			<li>
+				<label for="item_robot">Robot</label>
+			</li>
+			<li>
+				<label for="item_dragon">Dragon</label>
+			</li>
+			<li>
+				<label for="item_building">Building</label>
+			</li>
+			<li>
+				<label for="item_car">Car</label>
+			</li>
+		</ul>
+	</details>
 	<a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-
-		<a-entity position="0 1 1" scale="0.2 0.2 0.2" gltf-model="robot_playground/scene.gltf"
-			animation-mixer="clip: *; loop:repeat" isPlaying=true></a-entity>
-		<a-camera gps-camera rotation-reader> </a-camera>
+		<a-marker preset="custom_skull" type="pattern" url="/markers/skull.patt">
+			<a-entity id="entity_skull_model" drag-rotate-component position="0 -1 -1.5" rotation="270 0 0"
+				scale="0.1 0.1 0.1" gltf-model="/models/human_skull/scene.gltf" animation-mixer="clip: *; loop:repeat"
+				visible="false">
+			</a-entity>
+		</a-marker>
+		<a-marker preset="custom_plane" type="pattern" url="/markers/plane.patt">
+			<a-entity id="entity_plane_model" drag-rotate-component position="0 -1 -1.5" rotation="-60 0 -45"
+				scale="3 3 3" gltf-model="/models/stylized_ww1_plane/scene.gltf" animation-mixer="clip: *; loop:repeat"
+				visible="false">
+			</a-entity>
+		</a-marker>
+		<a-marker preset="custom_rex" type="pattern" url="/markers/rex.patt">
+			<a-entity id="entity_rex_model" drag-rotate-component position="0 -1 -1.5" rotation="270 0 0"
+				scale="0.5 0.5 0.5" gltf-model="/models/tyrannosaurus_rex/scene.gltf"
+				animation-mixer="clip: *; loop:repeat" visible="false">
+			</a-entity>
+		</a-marker>
+		<a-entity id="entity_robot_model" drag-rotate-component position="0 1.4 -1" scale="0.2 0.2 0.2"
+			gltf-model="/models/robot_playground/scene.gltf" animation-mixer="clip: *; loop:repeat" visible="true">
+		</a-entity>
+		<a-entity id="entity_dragon_model" drag-rotate-component position="0 1.3 -2" scale="0.1 0.1 0.1"
+			gltf-model="/models/black_dragon/scene.gltf" animation-mixer="clip: *; loop:repeat" visible="false">
+		</a-entity>
+		<a-entity id="entity_building_model" drag-rotate-component position="0 1.2 -1.7" scale="0.12 0.12 0.12"
+			gltf-model="/models/building_physics/scene.gltf" animation='dur:10000'
+			animation-mixer="clip: *; loop:repeat" visible="false">
+		</a-entity>
+		<a-entity id="entity_car_model" drag-rotate-component position="0 1.6 -1.3" rotation="0 90 30"
+			scale="1.4 1.4 1.4" gltf-model="/models/futuristic_car/scene.gltf" animation-mixer="clip: *; loop:repeat"
+			visible="false">
+		</a-entity>
+		<a-camera gps-camera look-controls="enabled:false">
+			<a-cursor></a-cursor>
+		</a-camera>
 	</a-scene>
 </body>
 
