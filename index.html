@@ -15,44 +15,46 @@
 </head>
 
 <body>
-	<div class="form_toggle">
-		<div class="form_toggle-item item-1" onclick="show_select_location_models();">
-			<input id="fid-1" type="radio" name="radio" value="Location" checked>
-			<label for="fid-1">Location models</label>
+	<div class="menu">
+		<div class="form_toggle">
+			<div class="form_toggle-item item-1" onclick="show_select_location_models();">
+				<input id="fid-1" type="radio" name="radio" value="Location" checked>
+				<label for="fid-1">Location models</label>
+			</div>
+			<div class="form_toggle-item item-2" onclick="show_marker_models();">
+				<input id="fid-2" type="radio" name="radio" value="Markers">
+				<label for="fid-2">Markers models</label>
+			</div>
 		</div>
-		<div class="form_toggle-item item-2" onclick="show_marker_models();">
-			<input id="fid-2" type="radio" name="radio" value="Markers">
-			<label for="fid-2">Markers models</label>
-		</div>
-	</div>
 
-	<details id="select_location_models" class="custom-select">
-		<summary class="radios">
-			<input type="radio" name="item" id="item_robot" title="Robot" onclick="pick_robot_model()" checked>
-			<input type="radio" name="item" id="item_dragon" title="Dragon" onclick="pick_dragon_model()">
-			<input type="radio" name="item" id="item_building" title="Building" onclick="pick_building_model()">
-			<input type="radio" name="item" id="item_car" title="Car" onclick="pick_car_model()">
-		</summary>
-		<ul class="list">
-			<li>
-				<label for="item_robot">Robot</label>
-			</li>
-			<li>
-				<label for="item_dragon">Dragon</label>
-			</li>
-			<li>
-				<label for="item_building">Building</label>
-			</li>
-			<li>
-				<label for="item_car">Car</label>
-			</li>
-		</ul>
-	</details>
+		<details id="select_location_models" class="custom-select">
+			<summary class="radios">
+				<input type="radio" name="item" id="item_robot" title="Robot" onclick="pick_robot_model()" checked>
+				<input type="radio" name="item" id="item_dragon" title="Dragon" onclick="pick_dragon_model()">
+				<input type="radio" name="item" id="item_building" title="Building" onclick="pick_building_model()">
+				<input type="radio" name="item" id="item_car" title="Car" onclick="pick_car_model()">
+			</summary>
+			<ul class="list">
+				<li>
+					<label for="item_robot">Robot</label>
+				</li>
+				<li>
+					<label for="item_dragon">Dragon</label>
+				</li>
+				<li>
+					<label for="item_building">Building</label>
+				</li>
+				<li>
+					<label for="item_car">Car</label>
+				</li>
+			</ul>
+		</details>
+	</div>
 	<a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 		<a-marker preset="custom_skull" type="pattern" url="/markers/skull.patt">
-			<a-entity id="entity_skull_model" drag-rotate-component position="0 -1 -1.5" rotation="270 0 0"
-				scale="0.1 0.1 0.1" gltf-model="/models/human_skull/scene.gltf" animation-mixer="clip: *; loop:repeat"
-				visible="false">
+			<a-entity style="height:400px;" id="entity_skull_model" drag-rotate-component position="0 -1 -1.5"
+				rotation="270 0 0" scale="0.1 0.1 0.1" gltf-model="/models/human_skull/scene.gltf"
+				animation-mixer="clip: *; loop:repeat" visible="false">
 			</a-entity>
 		</a-marker>
 		<a-marker preset="custom_plane" type="pattern" url="/markers/plane.patt">

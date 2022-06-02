@@ -14,6 +14,14 @@ body {
     flex-direction: column;
 }
 
+.menu {
+    left: 0;
+    top: 0;
+    padding: 1rem;
+    position: absolute;
+    z-index: 100;
+}
+
 details {
     position: relative;
     width: calc(150px + 10vw);
