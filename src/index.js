@@ -71,22 +71,47 @@ AFRAME.registerComponent('drag-rotate-component', {
     document.addEventListener('touchstart', this.OnDocumentTouchStart.bind(this));
     document.addEventListener('touchend', this.OnDocumentTouchEnd.bind(this));
     document.addEventListener('touchmove', this.OnDocumentTouchMove.bind(this));
-    document.addEventListener('mousedown', this.OnDocumentTouchStart.bind(this));
-    document.addEventListener('mouseup', this.OnDocumentTouchEnd.bind(this));
-    document.addEventListener('mousemove', this.OnDocumentTouchMove.bind(this));
+    document.addEventListener('mousedown', this.OnDocumentMouseDown.bind(this));
+    document.addEventListener('mouseup', this.OnDocumentMouseUp.bind(this));
+    document.addEventListener('mousemove', this.OnDocumentMouseMove.bind(this));
   },
   OnDocumentTouchStart: function (event) {
     this.ifTouchStart = true;
-    this.x_cord = event.clientX;
-    this.y_cord = event.clientY;
+    this.x_cord = event.touches[0].clientX;
+    this.y_cord = event.touches[0].clientY;
   },
   OnDocumentTouchEnd: function () {
     this.ifTouchStart = false;
   },
   OnDocumentTouchMove: function (event) {
     if (this.ifTouchStart) {
+      var temp_x = event.touches[0].clientX - this.x_cord;
+      var temp_y = event.touches[0].clientY - this.y_cord;
+
+      if (Math.abs(temp_y) < Math.abs(temp_x)) {
+        this.el.object3D.rotateY(temp_x * this.data.speed / 1000);
+      }
+      else {
+        this.el.object3D.rotateX(temp_y * this.data.speed / 1000);
+      }
+      this.x_cord = event.touches[0].clientX;
+      this.y_cord = event.touches[0].clientY;
+    }
+  },
+  OnDocumentMouseDown: function (event) {
+    this.ifTouchStart = true;
+    this.x_cord = event.clientX;
+    this.y_cord = event.clientY;
+  },
+  OnDocumentMouseUp: function () {
+    this.ifTouchStart = false;
+  },
+  OnDocumentMouseMove: function (event) {
+    if (this.ifTouchStart) {
+
       var temp_x = event.clientX - this.x_cord;
       var temp_y = event.clientY - this.y_cord;
+
       if (Math.abs(temp_y) < Math.abs(temp_x)) {
         this.el.object3D.rotateY(temp_x * this.data.speed / 1000);
       }
